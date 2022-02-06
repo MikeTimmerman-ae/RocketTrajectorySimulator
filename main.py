@@ -41,9 +41,10 @@ class Trajectory:
         self.Y_A0 = np.array([1, 0, 0])                                         # reference yaw axis
         self.P_A0 = np.array([0, 1, 0])                                         # reference pitch axis
         self.R_A0 = np.array([0, 0, 1])                                         # reference roll axis
+        self.launchAngle = 15                                                   # launch angle from vertical [deg]
         self.R_init = np.array([[1, 0, 0],                                      # initial orientation
-                                [0, np.cos(radians(15)), np.sin(radians(15))],
-                                [0, -np.sin(radians(15)), np.cos(radians(15))]])
+                                [0, np.cos(radians(self.launchAngle)), np.sin(radians(self.launchAngle))],
+                                [0, -np.sin(radians(self.launchAngle)), np.cos(radians(self.launchAngle))]])
 
         # Load engine data
         rse_data = requests.get('http://www.thrustcurve.org/simfiles/5f4294d20002e90000000764/download/data.rse').text
